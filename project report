@@ -1,0 +1,195 @@
+CAMPUS MANAGEMENT SYSTEM
+Major Project Report
+C, C++ with DSA Training Program — September 2026 Batch
+Student Name: Omkar Mishra
+Student ID: DSA-A3/JY-11262
+Submitted To: support@internselite.com (Pratham Saxena)
+Developed using: C++17, Object-Oriented Programming, Data Structures and Algorithms, and File Handling.
+1. Introduction
+The Campus Management System is a menu-driven console application intended to bring student administration, course enrollment, academic results, and library operations into a single software system.It demonstrates core C++17 and DSA concepts using persistent text files.
+2. Problem Statement
+Educational organizations handle student profiles, course registrations, marks, book inventories, and loans.
+A scattered/manual approach can cause duplicated enrollment, inconsistent inventory, and difficulty producing reports.
+This project provides controlled operations and basic integrity rules.
+3. Objectives and Scope
+Objectives:
+Maintain student profiles.
+Create courses and enforce enrollment capacity.
+Record grades only for enrolled learners.
+Generate marksheets and rankings.
+Manage book inventory and issue/return.
+Track overdue loans.
+Persist records.
+Demonstrate data structures and algorithm complexity.
+Scope: The project is a single-user console application with local files.
+Scope: The project is a single-user console application with local files.
+4. Functional Requirements
+Student Module:
+Register students.
+List students.
+Search students by ID.
+Update student details.
+Controlled removal of students.
+Course Module:
+Create and list courses.
+Enroll and remove students from courses.
+Reject duplicate enrollments.
+Prevent capacity overflow.
+Results Module:
+Enter marks between 0 and 100.
+Calculate grades.
+Generate marksheets.
+Display rankings.
+Library Module:
+Add and list books.
+Issue and return books.
+Generate loan reports.
+Generate overdue reports.
+Reporting Module:Display enrollment counts.
+Display overdue lists.
+5. Technology Stack
+The following technologies and concepts are used:
+C++17
+Classes and Structures
+Vectors
+Unordered Map
+Queue
+Stack
+Priority Queue
+Merge Sort
+Binary Search
+ifstream/ofstream
+Console Interface
+Git/GitHub for version control
+6. System Architecture
+The console menu is the presentation layer and routes commands into the Campus Manager.
+The manager contains rules, collection operations, indexes, algorithms, and persistence functions.
+Entity records include:
+Student
+Course
+Book
+Loan
+Result
+Local files used:
+students.txt
+courses.txt
+results.txt
+books.txt
+loans.txt
+Course enrollment IDs are embedded in courses.txt.
+7. Data Model and Relationships
+Student: Has a unique student ID and profile fields.
+Course: Has a unique course ID and an enrollment vector of student IDs.
+Result: Associates student ID and course ID with marks and grade.
+Book: Tracks total and available copies.
+Loan: Connects student and book with issue, due, and return dates and status.
+Course and Student are related many-to-many through course enrollment IDs.
+8. Data Structures Selection
+1. Vector: Convenient collection traversal and dynamic resizing. Deletion may shift later elements.
+2. Unordered Map: Used for ID-to-index lookups, with average O(1) complexity.
+3. Queue: Used for FIFO waiting requests when a book is unavailable (in-memory only).
+4. Stack: Used for session recent-action history.
+5. Priority Queue: Used to surface the highest marks first for ranking.
+Each structure is used where its access pattern is suitable.
+9. Algorithms
+Merge Sort
+Merge Sort is implemented for student-name sorting. It divides the vector recursively and merges sorted halves.
+Binary Search
+Binary Search is implemented for student ID lookup only after sorting students by ID using the same ascending comparison.
+Priority Queue
+Priority Queue provides descending marks retrieval.
+Linear Search
+Linear scans are used for some relationship and active-loan checks.
+10.Vector traversal O(n)
+Merge Sort O(n log n)
+Merge Sort auxiliary space O(n)
+Binary Search on sorted IDs O(log n)
+Sorting prerequisite O(n log n)
+Priority Queue push/pop O(log r)
+Priority Queue top O(1)
+Vector erase O(n)
+File load/save Linear in file records and text size
+11.11. Grade Policy
+The application follows the following grading system:
+Marks Grade
+90–100 O
+80–89.99 A+
+70–79.99 A
+60–69.99 B
+50–59.99 C
+40–49.99 D
+0–39.99 F
+The application validates marks between 0 and 100.
+Ranking output orders recorded course results by marks. Equal marks naturally share the same score, but rank numbering policy is not currently implemented as a formal competition rank.
+12. File Handling and Integrity
+Data files are pipe-delimited.
+User-provided pipes and newline characters are sanitized to spaces.
+The application:
+Loads files at startup.
+Saves relevant module files after mutations.
+Provides Save All and Exit.
+Advances IDs beyond the highest loaded ID.
+Rejects duplicate enrollments and capacity excess.
+Requires valid enrollment before entering marks.
+Blocks student removal when the student has enrollment associations or an active loan.
+Ignores malformed rows during loading.
+Text-file storage is not transactional, and backup/recovery is a future enhancement.
+13.Test Plan and Results
+The detailed test matrix is available in:
+test_cases/Test_Plan.md
+It covers:
+CRUD operations.
+Enrollment capacity and duplicates.
+Marks and grades.
+Library issue and return.
+Overdue reports.
+Searching and sorting.
+Malformed and missing files.
+Data persistence.
+Actual outcomes and Pass/Fail must be recorded after executing tests in the student environment.
+This report does not fabricate test results.
+14.Sample Data and Demonstration
+Sample students, courses, books, loans, and results are placed under the data/ directory.
+Demonstration should include:
+Registering a student.
+Creating a course.
+Enrolling a student.
+Entering marks.
+Viewing marksheet and ranking.
+Adding and issuing a book.
+Returning a book.
+Reporting overdue loans.
+Demonstrating Merge Sort and Binary Search.
+Restarting the application to verify persistence.
+Capture terminal screenshots locally.
+15.Challenges and Solutions
+Cross-module integrity is managed through ID checks and enrollment/loan conditions.
+Duplicate enrollments and capacity overflow are rejected.
+Book inventory availability changes during issue/return.
+Indexes are rebuilt after vector mutations to keep index positions consistent.
+Binary Search is only run after ID sorting.
+16.Local text files.
+Single-user usage.
+Basic date shape validation rather than calendar validation.
+Waiting queue is session-only and not persisted.
+No authentication or roles.
+File writes are not multi-file atomic.
+Future Enhancements:
+Add user roles and authentication.
+Implement persistent queue.
+Add stack-based undo for selected edits.
+Add CSV import/export.
+Implement backups.
+Add robust date validation.
+Add report export.
+Introduce tree-based indexing where useful.
+17.Conclusion
+This project demonstrates practical C++17 and DSA concepts through campus academic and library workflows.
+It combines OOP-oriented entities, multiple data structures, Merge Sort, Binary Search, validation, and file persistence.
+The student should compile, test, personalize the package, capture proof of execution, and be ready to explain trade-offs at evaluation.18. References
+Primary requirements source:
+Minor & Major Project Guidelines — C, C++ with DSA Training Program, September 2026 Batch (provided PDF).
+Additional implementation references may include C++17 standard/library documentation.
+Appendix A — Build Command
+Compile the project using:
+g++ -std=c++17 -Wall -Wextra -pedantic src/main.cpp -o campus_managementRun the application:./campus_management
