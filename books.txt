@@ -1,0 +1,2 @@
+201|Introduction to C++|Bjarne Stroustrup|Programming|5|4
+202|Data Structures in C++|Mark Allen Weiss|Programming|3|3
