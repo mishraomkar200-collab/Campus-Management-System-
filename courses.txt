@@ -1,0 +1,2 @@
+501|Data Structures|Computer Science|3|40|1001,1003
+502|Database Systems|Information Technology|4|35|1002
