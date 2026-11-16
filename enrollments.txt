@@ -1,0 +1,1 @@
+# Student-course relationships are stored in courses.txt as comma-separated student IDs.
